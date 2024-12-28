@@ -1,1 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lus3</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: monospace;
+        }
+
+        .dark-mode {
+            background-color: rgb(17, 17, 17);
+            filter: invert(0.935);
+        }
+
+        .dark-mode .site-paper {
+            filter: invert(1);
+        }
+
+        .dark-mode img {
+            filter: invert(1);
+        }
+
+        .dark-mode .primary-button {
+            filter: invert(1);
+        }
+
+        .LittleTree-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .site-paper {
+            background-image: url('https://i.pinimg.com/originals/7d/07/a2/7d07a255678962d30d8717dcf5dbd266.gif');
+            background-size: cover;
+            height: 25vh;
+            background-position: center;
+            margin: 5px;
+            border-radius: 20px;
+            top: 5px;
+        }
+
+        form input {
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid rgb(208, 208, 208);
+            outline: none;
+            margin: 3px 0;
+        }
+
+        form input:focus {
+            border-bottom: 2px solid #007bff;
+        }
+
+        .primary-button {
+            background-color: #ebaf40;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            border: 1px solid rgb(208, 208, 208);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .danger-button {
+            background-color: #dc3545;
+            color: white;
+            margin: 0 5px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .banner {
+            aspect-ratio: 1;
+            clip-path: circle(82% at 50% 0%);
+            margin-bottom: -22vw;
+            margin-top: -60vw;
+            z-index: -1;
+            background-image: url('https://i.pinimg.com/originals/30/6f/98/306f9835ffd4891a86ae677d83c2892f.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: none;
+        }
+
+        .info {
+            margin: 0px auto;
+            max-width: 800px;
+            padding: 0 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .user-info {
+            height: max-content;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pfp {
+            display: flex;
+            justify-content: left;
+        }
+
+        .pfp img {
+            border-radius: 50%;
+            height: 100px;
+            border: 4px solid white;
+            margin-bottom: 10px;
+            box-shadow: 0 10px 10px rgb(240, 212, 254);
+            z-index: 1;
+        }
+
+        .name {
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .about {
+            font-size: 14px;
+            color: rgb(106, 106, 106);
+            text-align: left;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+
+        .section a {
+            display: flex;
+            align-items: center;
+            color: black;
+            text-decoration: none;
+            border-radius: 20px;
+            border: 1px solid rgb(222, 222, 222);
+            margin: 20px 0;
+        }
+
+        .section a img {
+            height: 30px;
+        }
+
+        .img-container {
+            padding: 10px;
+            background-color: rgb(246, 237, 255);
+            border-radius: 50%;
+            aspect-ratio: 1;
+            height: 30px;
+            margin: 10px;
+        }
+
+
+        .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .links a {
+            border: none;
+            text-align: center;
+        }
+
+        .links a:hover {
+            color: rgb(0, 140, 255);
+            text-decoration: underline;
+        }
+
+        .links a img {
+            height: 15px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .skills a {
+            background-color: rgb(246, 237, 255);
+            padding: 5px 10px;
+            border-radius: 10px;
+            border: none;
+            margin: 5px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .input-card {
+            border: 1px solid rgb(208, 208, 208);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        @media screen and (max-width: 1000px) {
+
+            .links a {
+                border: none;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .banner {
+                margin-bottom: -25vw;
+                margin-top: -57vw;
+                display: block;
+            }
+
+            .name {
+                text-align: center;
+                font-size: 20px;
+            }
+
+            .about {
+                font-size: 14px;
+                color: rgb(128, 128, 128);
+                text-align: center;
+                font-weight: 100;
+                margin: 20px 0;
+            }
+
+            .info {
+                margin: 0px auto;
+                max-width: 400px;
+                padding: 10px;
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .pfp {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+
+            .user-info {
+                height: max-content;
+                position: relative;
+                padding: 0;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .site-paper {
+                height: 20vh;
+                margin: 5px;
+                border-radius: 20px;
+                position: relative;
+                top: 5px;
+            }
+
+
+            .LittleTree-form form {
+                width: 95%;
+                padding: 0;
+                margin: 0 auto;
+                padding: 10px 5px;
+                border-radius: 20px;
+            }
+
+            .LittleTree-form {
+                display: grid;
+                grid-template-columns: 1fr;
+                height: max-content;
+                gap: 5px;
+                align-items: center;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="myFunction()">Toggle dark mode</button>
+
+    <div class="LittleTree-form">
+        <div class="site-paper"></div>
+        <form id="form">
+            <h1>Form</h1>
+            <p style="font-size: 14px;">
+                Hey there 👋,<br> Welcome to Little Tree! Here you can add as many links, skills, and experiences as you
+                want and make a page.
+            </p>
+            <div id="message"></div>
+            <div class="input-card">
+                <p>GitHub username</p><br>
+                <input type="text" id="githubUsername" name="githubUsername" placeholder="GitHub Username" required><br>
+            </div>
+            <div id="links" class="input-card">
+                <p>Enter Links</p>
+                <div class="input-group">
+                    <input type="url" name="links[]" placeholder="Link">
+                    <button type="button" class="secondary-button add-button">Add</button>
+                </div>
+            </div>
+            <div id="skills" class="input-card">
+                <p>Skill:</p>
+                <div class="input-group">
+                    <input type="text" name="skills[]" placeholder="Skill">
+                    <button type="button" class="secondary-button add-button">Add</button>
+                </div>
+            </div>
+            <div id="experience" class="input-card">
+                <p>Experience:</p>
+                <div class="input-group">
+                    <input type="text" name="experience[]" placeholder="Experience">
+                    <button type="button" class="secondary-button add-button">Add</button>
+                </div>
+            </div>
+            <button type="submit" class="primary-button" id="submit-button">Generate Portfolio</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Add dynamic fields for links, skills, and experience
+            const sections = ["links", "skills", "experience"];
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+
+                section.addEventListener("click", event => {
+                    if (event.target.classList.contains("add-button")) {
+                        // Add new input field
+                        const inputGroup = document.createElement("div");
+                        inputGroup.classList.add("input-group");
+
+                        const input = document.createElement("input");
+                        input.type = "text";
+                        input.placeholder = sectionId.slice(0, -1); // Singular name
+                        input.name = `${sectionId}[]`; // Use unique name for grouping
+
+                        const deleteButton = document.createElement("button");
+                        deleteButton.type = "button";
+                        deleteButton.classList.add("danger-button");
+                        deleteButton.textContent = "Delete";
+
+                        inputGroup.appendChild(input);
+                        inputGroup.appendChild(deleteButton);
+                        section.appendChild(inputGroup);
+                    }
+
+                    if (event.target.classList.contains("danger-button")) {
+                        // Remove the input field
+                        const inputGroup = event.target.parentElement;
+                        section.removeChild(inputGroup);
+                    }
+                });
+            });
+
+            document.getElementById("form").addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent the default form submission
+                const messageDiv = document.getElementById("message");
+                const submitButton = document.getElementById("submit-button");
+
+                messageDiv.textContent = "Submitting...";
+                messageDiv.style.display = "block";
+                submitButton.disabled = true;
+
+                // Collect the form data
+                const formData = new FormData(this);
+                const data = {};
+
+                // Group dynamic inputs as CSV strings
+                ["links", "skills", "experience"].forEach(sectionId => {
+                    const inputs = document.querySelectorAll(`#${sectionId} input[name="${sectionId}[]"]`);
+                    const values = Array.from(inputs).map(input => input.value.trim()).filter(value => value !== "");
+                    data[sectionId] = values.join(","); // Convert to CSV
+                });
+
+                // Add static inputs
+                data.githubUsername = formData.get("githubUsername");
+
+                // Prepare the request payload
+                const keyValuePairs = Object.entries(data).map(
+                    ([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+                );
+
+                const formDataString = keyValuePairs.join("&");
+
+                // Send a POST request to your Google Apps Script
+                fetch(
+                    "https://script.google.com/macros/s/AKfycbwU41H9p7ujNYOqhe5KrTdSlC454W9MQCgWA8Qqr2tTmEVjySpuu-yzTe6ioqRAZjbU/exec",
+                    {
+                        redirect: "follow",
+                        method: "POST",
+                        body: formDataString,
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+                        },
+                    }
+                )
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result && result.uniqueCode) {
+                            // Hide the form
+                            document.querySelectorAll(".input-card").forEach(card => {
+                                card.style.display = "none";
+                            });
+
+                            // Display the unique link
+                            messageDiv.innerHTML = `
+                                <p>Your unique link is:</p>
+                                <a href="?=${result.uniqueCode}" target="_blank">
+                                    http://127.0.0.1:5500/?=${result.uniqueCode}
+                                </a>
+                            `;
+                        } else {
+                            messageDiv.textContent = "Error: Could not generate a unique code.";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error submitting the form:", error);
+                        messageDiv.textContent = "An error occurred. Please try again.";
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const uniqueCode = urlParams.get("");
+
+            if (uniqueCode) {
+                // Hide the form and show the user's data
+                document.querySelector(".LittleTree-form").style.display = "none";
+
+                // Check if the user data is in local storage and still valid
+                const cachedData = getCachedData(uniqueCode);
+
+                if (cachedData) {
+                    // If cached data exists and is still valid, use it
+                    displayUserData(cachedData.userData, cachedData.userProfile, cachedData.repos);
+                } else {
+                    // Otherwise, fetch the data from the server
+                    fetchUserData(uniqueCode);
+                }
+            }
+
+            // Function to fetch the data based on the unique code
+            function fetchUserData(code) {
+                fetch("https://script.google.com/macros/s/AKfycbwU41H9p7ujNYOqhe5KrTdSlC454W9MQCgWA8Qqr2tTmEVjySpuu-yzTe6ioqRAZjbU/exec")  // Your GAS URL
+                    .then(response => response.json())
+                    .then(data => {
+                        const userData = data.find(item => item.uniqueCode === code);
+
+                        if (userData) {
+                            fetchGitHubData(userData.githubUsername, userData);
+                        } else {
+                            alert("User data not found.");
+                        }
+                    })
+                    .catch(error => console.error("Error fetching user data:", error));
+            }
+
+            // Function to fetch GitHub data
+            function fetchGitHubData(username, userData) {
+                const githubAPI = `https://api.github.com/users/${username}`;
+                const githubReposAPI = `https://api.github.com/users/${username}/repos`;
+
+                let githubDataAvailable = true;
+
+                // Fetch user profile data
+                fetch(githubAPI)
+                    .then(response => response.json())
+                    .then(userProfile => {
+                        // Fetch user repositories
+                        fetch(githubReposAPI)
+                            .then(response => response.json())
+                            .then(repos => {
+                                const userDataToCache = { userData, userProfile, repos };
+                                // Cache the data for 1 day (86400000 ms)
+                                cacheUserData(userData.uniqueCode, userDataToCache);
+                                displayUserData(userData, userProfile, repos);
+                            })
+                            .catch(error => {
+                                githubDataAvailable = false;
+                                console.error("Error fetching GitHub repositories:", error);
+                                displayUserData(userData, null, []);
+                            });
+                    })
+                    .catch(error => {
+                        githubDataAvailable = false;
+                        console.error("Error fetching GitHub profile:", error);
+                        displayUserData(userData, null, []);
+                    });
+            }
+
+            function displayUserData(userData, userProfile, repos) {
+                const userDiv = document.createElement("div");
+                userDiv.classList.add("LittleTree");
+
+                const githubSection = userProfile
+                    ? `
+                        <div class="pfp">
+                            <img src="${userProfile.avatar_url}" alt="Profile Picture">
+                        </div>
+                        <div class="name">${userProfile.name || userProfile.login}</div>
+                        <div class="about">${userProfile.bio || "No description available"}</div>
+                    `
+                    : ''; // Hide GitHub section if GitHub data is unavailable
+
+                const userInfo = `
+        <div class="LittleTree">
+            <div class="banner"></div>
+            <div class="info">
+                <div class="user-info">
+                    ${githubSection}
+                    <div class="section links">
+                        ${userData.links.split(',').map(link => {
+                    try {
+                        // Check if the link is valid before using it
+                        const url = new URL(link); // Try to create a URL object
+                        const domain = url.hostname.replace('www.', ''); // Extract domain name
+                        return `
+                                    <a href="${link}" target="_blank">${domain}<img src="https://jatin0jha.github.io/asset/openlink.svg" height="20px" alt="">
+                                    </a>`;
+                    } catch (error) {
+                        // If the link is invalid, skip it
+                        console.warn(`Invalid link: ${link}`);
+                        return ''; // Return empty string for invalid link
+                    }
+                }).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="section">
+                                <h1>Skills</h1>
+                                <div class="skills">
+                                ${userData.skills.split(',').map(skill => `
+                                    <a>${skill}
+                                    </a>`).join('')}
+                                    </div>
+                            </div>
+                            <div class="section">
+                                <h1>Experience</h1>
+                                ${userData.experience.split(',').map(exp => `
+                                    <a>
+                                        <div class="img-container">
+                                            <img src="https://www.svgrepo.com/show/286219/web-page-website.svg" alt="">
+                                        </div>${exp}
+                                    </a>`).join('')}
+                            </div>
+                            <div class="section">
+                                <h1>Projects</h1>
+                                ${repos.slice(0, 5).map(repo => `
+                                    <a href="${repo.html_url}" target="_blank">
+                                        <div class="img-container">
+                                            <img src="https://www.svgrepo.com/show/286219/web-page-website.svg" alt="">
+                                        </div>${repo.name}
+                                    </a>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                userDiv.innerHTML = userInfo;
+                document.body.appendChild(userDiv);
+            }
+
+            // Function to cache user data for 1 day
+            function cacheUserData(uniqueCode, data) {
+                const expirationTime = Date.now() + 86400000; // 1 day in milliseconds
+                const cachedData = { ...data, expirationTime };
+                localStorage.setItem(uniqueCode, JSON.stringify(cachedData));
+            }
+
+            // Function to get cached data from local storage
+            function getCachedData(uniqueCode) {
+                const cachedData = localStorage.getItem(uniqueCode);
+                if (cachedData) {
+                    const parsedData = JSON.parse(cachedData);
+                    if (parsedData.expirationTime > Date.now()) {
+                        return parsedData; // Return data if it's still valid
+                    } else {
+                        localStorage.removeItem(uniqueCode); // Remove expired data
+                    }
+                }
+                return null; // Return null if no valid cached data
+            }
+        });
+    </script>
+</body>
+</html>
