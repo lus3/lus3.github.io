@@ -28,6 +28,20 @@
             filter: invert(1);
         }
 
+        .dark-mode .theme-switch {
+            background-image: url('https://www.svgrepo.com/show/529729/moon.svg');
+        }
+
+        .theme-switch {
+            width: 30px;
+            aspect-ratio: 1;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            background-image: url('https://www.svgrepo.com/show/529971/sun-2.svg');
+            background-size: cover;
+        }
+
         .LittleTree-form {
             display: grid;
             grid-template-columns: 1fr;
@@ -289,10 +303,10 @@
 </head>
 
 <body>
-    <button onclick="myFunction()">Toggle dark mode</button>
 
     <div class="LittleTree-form">
         <div class="site-paper"></div>
+        <button onclick="myFunction()" class="theme-switch"></button>
         <form id="form">
             <h1>Form</h1>
             <p style="font-size: 14px;">
@@ -542,15 +556,16 @@
                         const url = new URL(link); // Try to create a URL object
                         const domain = url.hostname.replace('www.', ''); // Extract domain name
                         return `
-                                    <a href="${link}" target="_blank">${domain}<img src="https://jatin0jha.github.io/asset/openlink.svg" height="20px" alt="">
-                                    </a>`;
-                    } catch (error) {
-                        // If the link is invalid, skip it
-                        console.warn(`Invalid link: ${link}`);
-                        return ''; // Return empty string for invalid link
-                    }
-                }).join('')}
+                            <a href="${link}" target="_blank">${domain}<img src="https://jatin0jha.github.io/asset/openlink.svg" height="20px" alt="">
+                            </a>`;
+                            } catch (error) {
+                                // If the link is invalid, skip it
+                                console.warn(`Invalid link: ${link}`);
+                                return ''; // Return empty string for invalid link
+                            }
+                        }).join('')}
                             </div>
+                            <button onclick="myFunction()" class="theme-switch"></button>
                         </div>
                         <div>
                             <div class="section">
@@ -564,20 +579,20 @@
                             <div class="section">
                                 <h1>Experience</h1>
                                 ${userData.experience.split(',').map(exp => `
-                                    <a>
-                                        <div class="img-container">
-                                            <img src="https://www.svgrepo.com/show/286219/web-page-website.svg" alt="">
-                                        </div>${exp}
-                                    </a>`).join('')}
+                                <a>
+                                    <div class="img-container">
+                                        <img src="https://www.svgrepo.com/show/286219/web-page-website.svg" alt="">
+                                    </div>${exp}
+                                </a>`).join('')}
                             </div>
                             <div class="section">
                                 <h1>Projects</h1>
                                 ${repos.slice(0, 5).map(repo => `
-                                    <a href="${repo.html_url}" target="_blank">
-                                        <div class="img-container">
-                                            <img src="https://www.svgrepo.com/show/286219/web-page-website.svg" alt="">
-                                        </div>${repo.name}
-                                    </a>`).join('')}
+                                <a href="${repo.html_url}" target="_blank">
+                                    <div class="img-container">
+                                        <img src="https://www.svgrepo.com/show/286219/web-page-website.svg" alt="">
+                                    </div>${repo.name}
+                                </a>`).join('')}
                             </div>
                         </div>
                     </div>
